@@ -1,10 +1,10 @@
 <template>
   <div>
-        <div id="title" class="text-center">
+        <div id="title" class="text-center text-white">
             <h1>Rick and Morty Library</h1>
         </div>
         <Search/>
-        <div id="main" class="main">
+        <!-- <div id="main" class="main">
           <div class="container max-height-1000">
             <div class="row content-center">
               <div class="col-md-6 card-infos " id="card-character" v-for="character in characters" v-bind:key="character">
@@ -17,8 +17,8 @@
                       </div>
                 </div>
             </div>
-          </div>
-        </div>
+          </div> -->
+        <!-- </div> -->
     </div>
 </template>
 
@@ -30,24 +30,19 @@ export default {
   name: 'App',
   components: {
     Search
-  }, 
-
-  created: function(){
-    axios.get('https://rickandmortyapi.com/api/character/').then(response => (console.log(response.data)));
-    
   },
   data: function (){
     return{
-      characters: [],
+      searchChar: '',
+      searchEP: '',
+      charData: null,
+      epData: null,
+      apiUrl: 'https://rickandmortyapi.com/api',
+      characters: 'https://rickandmortyapi.com/api/character',
+      locations: 'https://rickandmortyapi.com/api/location',
+      episodes: 'https://rickandmortyapi.com/api/episode'
     }
-  }
-  // methods:{
-  //   listCharacters(id){
-  //     this.characterId = id;
-  //     console.log(this.characterId)
-  //     axios.get(`https://rickandmortyapi.com/api/character/${this.characterId}`)
-  //   }
-  // }
+  }  
 }
 </script>
 
