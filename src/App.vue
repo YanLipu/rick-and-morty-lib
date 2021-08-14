@@ -4,13 +4,27 @@
             <h1>Rick and Morty Library</h1>
         </div>
         <Search/>
-        <div v-for="chars in charData">
-          {{ chars.name }}
-          <div>
-            <img :src="chars.image" alt="" style="heigth: 50px; width: 50px;">
+        <div class="main-content">
+          <div class="card card-infos" v-for="chars in charData">
+            <div class="card-body">
+              <div class="card-data">
+                <h4>{{ chars.name }}</h4>
+              </div>
+              <div class="card-image">
+                <img :src="chars.image" class="img-style">
+              </div>
+            </div>            
+            <div class="card-actions">
+              <button class="button-info">
+                More Informations
+              </button>
+            </div>
           </div>
-          <div>
-            
+          <div class="pages-control">
+            <div class="buttons">
+              <button class="button-control" @click="previousPage()">Previous</button>
+              <button class="button-control" @click="nextPage()">Next</button>
+            </div>
           </div>
         </div>
   </div>
@@ -46,6 +60,7 @@ export default {
       console.log('Terminou a função')
     },
     nextPage() {
+      console.log('esta clicando')
       if(this.page < 34){
         this.page++
       }
@@ -55,6 +70,7 @@ export default {
       if(this.page > 0){
         this.page--
       }
+      this.getCharacterList(this.page)
     }
   },
   created: function() {
