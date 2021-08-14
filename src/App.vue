@@ -4,22 +4,15 @@
             <h1>Rick and Morty Library</h1>
         </div>
         <Search/>
-        <!-- <div id="main" class="main">
-          <div class="container max-height-1000">
-            <div class="row content-center">
-              <div class="col-md-6 card-infos " id="card-character" v-for="character in characters" v-bind:key="character">
-                      <div>
-                        <label for=""></label>
-                      </div>
-                      <div>
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="" style="width: 100px; height: 100px; border-radius: 8px;">
+        <div>
+          <div>
 
-                      </div>
-                </div>
-            </div>
-          </div> -->
-        <!-- </div> -->
-    </div>
+          </div>
+          <div>
+            
+          </div>
+        </div>
+  </div>
 </template>
 
 <script>
@@ -33,16 +26,25 @@ export default {
   },
   data: function (){
     return{
-      searchChar: '',
-      searchEP: '',
-      charData: null,
-      epData: null,
-      apiUrl: 'https://rickandmortyapi.com/api',
+      page: 1,
+      pageSize: null,
       characters: 'https://rickandmortyapi.com/api/character',
-      locations: 'https://rickandmortyapi.com/api/location',
-      episodes: 'https://rickandmortyapi.com/api/episode'
     }
-  }  
+  },
+  methods: {
+    getCharacterList() {
+      const axios = require('axios')
+      axios.get(`${ this.characters }/?pages=${ this.page }`).then(response => {
+        console.log('response is: ', response.data.results)
+        this.pageSize = response.data.results.length
+        console.log('o tamanho da pagina é de: ', this.pageSize)
+      })
+      console.log('Terminou a função')
+    }
+  },
+  created: function() {
+    this.getCharacterList()
+  } 
 }
 </script>
 
