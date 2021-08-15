@@ -10,9 +10,12 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+## Descrição do projeto
 ```
-npm run build
+Página de listagem dos personagens contendo nome e ultima localização
+```
+```
+Método de busca retorna resultados somente no console
 ```
 
 ### Customize configuration
