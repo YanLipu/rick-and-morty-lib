@@ -48,6 +48,7 @@ export default {
         console.log('response is: ', response.data.results)
         this.charData = response.data
       })
+      this.$router.push('/results')
       console.log('Terminou a função')
     },
     getEpisodesData() {
