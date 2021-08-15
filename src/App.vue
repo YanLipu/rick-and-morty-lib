@@ -3,7 +3,6 @@
         <div id="title" class="text-center text-white">
             <h1>Rick and Morty Library</h1>
         </div>
-        <Search/>
         <router-view/>
         
   </div>

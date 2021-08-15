@@ -16,17 +16,23 @@
                 </div>
             </div>  
           </div>
-        </div>
+          <Results :chars="{charData}" v-if="showResults"/>
+    </div>
 </template>
 <script>
+import Results from './Results.vue'
 export default {
   name: 'Search',
+  components: {
+    Results
+  },
   data: function (){
     return{
       searchChar: '',
       searchEp: '',
       charData: null,
       epData: null,
+      showResults: false,
       apiUrl: 'https://rickandmortyapi.com/api',
       characters: 'https://rickandmortyapi.com/api/character',
       locations: 'https://rickandmortyapi.com/api/location',
@@ -48,7 +54,9 @@ export default {
         console.log('response is: ', response.data.results)
         this.charData = response.data
       })
-      this.$router.push('/results')
+      this.showResults = true
+      // this.$emit(this.charData)
+      // this.$router.push('/results')
       console.log('Terminou a função')
     },
     getEpisodesData() {
@@ -57,6 +65,8 @@ export default {
         console.log('response is:', response.data.results)
         this.epData = response.data
       })
+      this.showResults = true
+      // this.$router.push('/results')
       console.log('Terminou a função')
     }
   }
